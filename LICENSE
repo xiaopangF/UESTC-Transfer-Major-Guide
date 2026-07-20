@@ -1,0 +1,25 @@
+Content License
+===============
+
+Unless otherwise noted, original documentation, student experiences, recalled
+questions, original practice materials, and data curation in this repository
+are licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0).
+
+License text:
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+Human-readable summary:
+https://creativecommons.org/licenses/by/4.0/
+
+Attribution may be provided through the author_credit field, the page history,
+or the repository contribution history. A contributor may request the visible
+credit "anonymous contributor", but public GitHub history may still identify
+their account.
+
+Official notices, third-party materials, quoted content, and content reached
+through external links remain subject to their original rights and licenses.
+Their inclusion or citation does not relicense them under CC BY 4.0.
+
+Code under scripts/ and .github/workflows/ is licensed separately under the
+MIT License in LICENSE-CODE.

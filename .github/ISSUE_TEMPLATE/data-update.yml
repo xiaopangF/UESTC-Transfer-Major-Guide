@@ -1,0 +1,109 @@
+name: 申请数据新增或纠错
+description: 新增历年申请人数记录，或纠正现有数据与来源
+title: "[数据] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        未知数据请留空，只有来源明确为零时才填 0。请提供可公开访问的主要来源。
+
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: 变更类型
+      options:
+        - 新增记录
+        - 纠正现有记录
+        - 补充或更新来源
+    validations:
+      required: true
+
+  - type: input
+    id: existing_record
+    attributes:
+      label: 现有记录 ID
+      description: 纠错时填写 application-stats.csv 中的 record_id；新增时留空。
+
+  - type: input
+    id: cycle_year
+    attributes:
+      label: 年份
+      placeholder: YYYY
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: 目标学院与专业
+      placeholder: 学院 / 专业 / 方向（如有）
+    validations:
+      required: true
+
+  - type: input
+    id: batch
+    attributes:
+      label: 批次或统计口径
+      description: 填写来源使用的批次、轮次或统计范围。
+    validations:
+      required: true
+
+  - type: textarea
+    id: counts
+    attributes:
+      label: 人数数据
+      description: 可填写计划名额、申请人数、审核通过人数、参加考核人数、录取人数；未知项留空。
+      placeholder: |
+        计划名额：
+        申请人数：
+        审核通过人数：
+        参加考核人数：
+        录取人数：
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source_type
+    attributes:
+      label: 主要来源类型
+      options:
+        - 学校或学院官方通知
+        - 学校或学院官方附件
+        - 考生公开记录
+        - 其他公开来源
+    validations:
+      required: true
+
+  - type: input
+    id: source_title
+    attributes:
+      label: 来源标题
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: 来源链接
+      description: 必须是可公开访问的 HTTPS 链接。
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 口径说明或补充来源
+      description: 说明不同来源间的差异、交叉核对过程或异常数据。
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我没有凭印象补全未知数字，并已说明数据口径。
+          required: true
+        - label: 来源可公开访问，且提交内容不含个人信息。
+          required: true
+        - label: 我同意原创的数据整理部分按 CC BY 4.0 发布。
+          required: true

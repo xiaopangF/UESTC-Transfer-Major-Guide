@@ -1,0 +1,51 @@
+---
+layout: default
+title: 历年申请数据
+---
+
+# 历年申请数据
+
+- 数据文件：[application-stats.csv](application-stats.csv)
+- 字段定义：[application-stats.schema.json](application-stats.schema.json)
+
+CSV 目前只有表头，不包含任何年份数据。一行代表某一自然年、批次、目标学院与专业、统计口径相同的一条记录。
+
+## 字段说明
+
+| 字段 | 必填 | 含义 |
+| --- | --- | --- |
+| `record_id` | 是 | 稳定且唯一的记录标识，只使用小写字母、数字、点、下划线和连字符 |
+| `cycle_year` | 是 | 结果公布所在的四位自然年 |
+| `academic_term` | 否 | 原始来源使用的学期或学年表述 |
+| `batch` | 是 | 批次、轮次或阶段；没有区分时使用来源中的统一表述 |
+| `target_college` | 是 | 当年来源中的目标学院名称 |
+| `target_major` | 是 | 当年来源中的目标专业名称 |
+| `target_track` | 否 | 方向、项目或分流名称 |
+| `planned_quota` | 否 | 计划名额，未知留空 |
+| `applicant_count` | 否 | 申请人数，未知留空 |
+| `eligible_count` | 否 | 资格审核通过人数，未知留空 |
+| `exam_attendee_count` | 否 | 实际参加考核人数，未知留空 |
+| `admitted_count` | 否 | 最终录取人数，未知留空 |
+| `source_type` | 是 | `official_notice`、`official_attachment`、`candidate_report` 或 `other_public` |
+| `source_title` | 是 | 主要来源的页面或材料标题 |
+| `source_url` | 是 | 可公开访问的 HTTPS 来源链接 |
+| `source_published_at` | 否 | 来源发布日期，格式为 `YYYY-MM-DD` |
+| `evidence_level` | 是 | `official`、`corroborated`、`single_report` 或 `unverified` |
+| `last_verified_at` | 是 | 最后一次检查来源的日期，格式为 `YYYY-MM-DD` |
+| `notes` | 否 | 统计口径、补充来源或异常情况 |
+
+## 录入规则
+
+- 未知值留空，只有来源明确为零时才填 `0`。
+- 所有人数字段只接受非负整数。
+- 不在表中保存计算得到的录取率。
+- `official` 必须对应学校或学院公开页面。
+- `corroborated` 应至少有两个独立来源，并在 `notes` 或对应 PR 中说明。
+- 同名专业在不同年份发生归属或名称变化时，保留当年的原始名称。
+- 原网页失效时可在 `notes` 中补充合法的网页存档链接，但不要删除已记录的原始 URL。
+
+提交前运行：
+
+```bash
+python scripts/validate_data.py
+```

@@ -1,0 +1,51 @@
+name: 流程或内容纠错
+description: 报告流程变化、事实错误、失效链接或索引问题
+title: "[纠错] "
+body:
+  - type: input
+    id: affected_page
+    attributes:
+      label: 受影响页面
+      description: 请填写仓库内文件路径或页面 URL。
+    validations:
+      required: true
+
+  - type: input
+    id: cycle_year
+    attributes:
+      label: 涉及年份
+      description: 不涉及具体年份时填写“不适用”。
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: 当前问题
+      description: 简要说明哪里错误、过时、含混或无法访问。
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_change
+    attributes:
+      label: 建议修改
+    validations:
+      required: true
+
+  - type: input
+    id: source_url
+    attributes:
+      label: 依据链接
+      description: 政策、日期、资格与名额等事实纠错必须提供当年官方来源。
+      placeholder: https://
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 提交确认
+      options:
+        - label: 本 Issue 不包含需要私下处理的个人信息或非公开考试内容。
+          required: true

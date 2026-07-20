@@ -1,0 +1,83 @@
+name: 计算机专业机考回忆投稿
+description: 提交对应考核结束后由考生本人整理的机考回忆
+title: "[机考回忆] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本表单只接收考生回忆版，不接收内部题库、泄露材料、扫描件、付费资料或仍在进行的考试内容。请使用自己的语言整理，不要称为官方真题。
+
+  - type: input
+    id: cycle_year
+    attributes:
+      label: 考核年份
+      placeholder: YYYY
+    validations:
+      required: true
+
+  - type: input
+    id: target
+    attributes:
+      label: 目标学院与专业
+      placeholder: 学院 / 专业
+    validations:
+      required: true
+
+  - type: input
+    id: assessment_name
+    attributes:
+      label: 考核名称或批次
+      description: 不确定时可写“不确定”。
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 考核环境
+      description: 可填写日期、时长、语言、设备或允许工具；不确定的信息请明确标注。
+
+  - type: dropdown
+    id: confidence
+    attributes:
+      label: 记忆置信度
+      options:
+        - 高：大部分细节可以确认
+        - 中：主题可信，具体表述可能有偏差
+        - 低：只记得部分主题或零散内容
+    validations:
+      required: true
+
+  - type: textarea
+    id: recall
+    attributes:
+      label: 回忆内容
+      description: 说明题目或考察主题、完整度，以及是否和其他考生交叉核对。
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference_ideas
+    attributes:
+      label: 参考思路
+      description: 可选。只能称为个人参考思路，不能冒充官方答案。
+
+  - type: input
+    id: author_credit
+    attributes:
+      label: 页面署名
+      placeholder: 匿名贡献者
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 投稿确认
+      options:
+        - label: 对应考核已经完全结束，内容由考生本人凭记忆整理。
+          required: true
+        - label: 内容不来自内部题库、泄露材料、未授权复制品或付费资料。
+          required: true
+        - label: 内容不含任何考生、教师或工作人员的个人信息。
+          required: true
+        - label: 我同意原创部分按 CC BY 4.0 发布。
+          required: true
+        - label: 我理解回忆可能有误，仓库不会将其标为官方真题。
+          required: true

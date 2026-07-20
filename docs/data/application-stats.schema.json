@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UESTC major transfer application statistics row",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "cycle_year": {
+      "type": "integer",
+      "minimum": 2000,
+      "maximum": 2100
+    },
+    "academic_term": {
+      "type": "string"
+    },
+    "batch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_college": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_major": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_track": {
+      "type": "string"
+    },
+    "planned_quota": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "applicant_count": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "eligible_count": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "exam_attendee_count": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "admitted_count": {
+      "type": ["integer", "null"],
+      "minimum": 0
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "official_notice",
+        "official_attachment",
+        "candidate_report",
+        "other_public"
+      ]
+    },
+    "source_title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "source_published_at": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "evidence_level": {
+      "type": "string",
+      "enum": [
+        "official",
+        "corroborated",
+        "single_report",
+        "unverified"
+      ]
+    },
+    "last_verified_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "record_id",
+    "cycle_year",
+    "batch",
+    "target_college",
+    "target_major",
+    "source_type",
+    "source_title",
+    "source_url",
+    "evidence_level",
+    "last_verified_at"
+  ]
+}

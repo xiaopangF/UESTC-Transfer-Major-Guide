@@ -1,0 +1,43 @@
+name: 内容报告
+description: 报告版权、隐私、考试安全或其他需要移除的内容
+title: "[内容报告] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        这是公开 Issue。请只填写受影响页面及问题类型，不要复述敏感信息、题目内容或个人信息。敏感证据请通过维护者公开的私下渠道提交。
+
+  - type: input
+    id: affected_page
+    attributes:
+      label: 受影响页面
+      description: 填写仓库内文件路径或页面 URL。
+    validations:
+      required: true
+
+  - type: dropdown
+    id: report_type
+    attributes:
+      label: 问题类型
+      options:
+        - 个人隐私
+        - 版权或未授权转载
+        - 非公开或仍在进行的考试内容
+        - 错误归属或署名
+        - 其他需要移除的内容
+    validations:
+      required: true
+
+  - type: textarea
+    id: public_details
+    attributes:
+      label: 可公开说明
+      description: 可选。不要在这里粘贴需要删除的原文或任何敏感证据。
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 提交确认
+      options:
+        - label: 我没有在本 Issue 中重复发布需要保护或移除的内容。
+          required: true
