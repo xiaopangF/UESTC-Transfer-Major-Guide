@@ -22,7 +22,7 @@ body:
     id: existing_record
     attributes:
       label: 现有记录 ID
-      description: 纠错时填写 application-stats.csv 中的 record_id；新增时留空。
+      description: 纠错时填写“历年申请数据.csv”中的 record_id；新增时留空。
 
   - type: input
     id: cycle_year

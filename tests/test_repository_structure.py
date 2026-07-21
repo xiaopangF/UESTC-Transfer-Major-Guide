@@ -16,23 +16,23 @@ class RepositoryStructureTests(unittest.TestCase):
             ".github/ISSUE_TEMPLATE/experience.yml",
             ".github/ISSUE_TEMPLATE/exam-recall.yml",
             ".github/ISSUE_TEMPLATE/data-update.yml",
-            "templates/interview-experience.md",
-            "templates/exam-recall.md",
-            "templates/yearly-process.md",
+            "templates/面试与转专业经验模板.md",
+            "templates/机考回忆模板.md",
+            "templates/年度流程模板.md",
         ]
         for relative_path in required_files:
             with self.subTest(path=relative_path):
                 self.assertTrue((ROOT / relative_path).is_file())
 
     def test_exam_area_accepts_recollections_only(self):
-        exam_template = (ROOT / "templates" / "exam-recall.md").read_text(
+        exam_template = (ROOT / "templates" / "机考回忆模板.md").read_text(
             encoding="utf-8"
         )
         issue_form = (
             ROOT / ".github" / "ISSUE_TEMPLATE" / "exam-recall.yml"
         ).read_text(encoding="utf-8")
         exam_index = (
-            ROOT / "docs" / "exams" / "computer" / "index.md"
+            ROOT / "docs" / "exams" / "computer" / "计算机专业机考回忆索引.md"
         ).read_text(encoding="utf-8")
 
         combined = "\n".join([exam_template, issue_form, exam_index])

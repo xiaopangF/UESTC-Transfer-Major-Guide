@@ -10,7 +10,7 @@ class ValidateDataTests(unittest.TestCase):
     def write_csv(self, rows, fieldnames=None):
         temporary_directory = tempfile.TemporaryDirectory()
         self.addCleanup(temporary_directory.cleanup)
-        path = Path(temporary_directory.name) / "application-stats.csv"
+        path = Path(temporary_directory.name) / "历年申请数据.csv"
         with path.open("w", encoding="utf-8", newline="") as handle:
             writer = csv.DictWriter(
                 handle,

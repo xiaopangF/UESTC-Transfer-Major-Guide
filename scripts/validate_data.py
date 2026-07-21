@@ -14,8 +14,8 @@ from urllib.parse import urlsplit
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_FILE = ROOT / "docs" / "data" / "application-stats.csv"
-SCHEMA_FILE = ROOT / "docs" / "data" / "application-stats.schema.json"
+DATA_FILE = ROOT / "docs" / "data" / "历年申请数据.csv"
+SCHEMA_FILE = ROOT / "docs" / "data" / "历年申请数据字段.json"
 
 EXPECTED_FIELDS = [
     "record_id",
