@@ -5,3 +5,8 @@ __pycache__/
 Thumbs.db
 .idea/
 .vscode/
+
+# Source documents are summarized as text and must not be committed.
+*.doc
+*.docx
+*.rar

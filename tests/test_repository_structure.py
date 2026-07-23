@@ -8,8 +8,49 @@ MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 
 class RepositoryStructureTests(unittest.TestCase):
+    def test_grade_labels_do_not_contain_internal_spaces(self):
+        spaced_grade = re.compile(r'20\d{2}\s+级')
+        failures = []
+
+        for markdown_path in ROOT.rglob('*.md'):
+            content = markdown_path.read_text(encoding='utf-8')
+            for line_number, line in enumerate(content.splitlines(), start=1):
+                if spaced_grade.search(line):
+                    failures.append(
+                        '{}:{}: {}'.format(
+                            markdown_path.relative_to(ROOT),
+                            line_number,
+                            line.strip(),
+                        )
+                    )
+
+        self.assertFalse(
+            failures,
+            'Grade labels must use the 2025级/2024级 form: {}'.format(
+                failures
+            ),
+        )
+
+    def test_source_binaries_are_not_committed(self):
+        blocked_suffixes = {'.doc', '.docx', '.rar'}
+        failures = []
+
+        for path in ROOT.rglob('*'):
+            if not path.is_file() or '.git' in path.parts:
+                continue
+            if path.suffix.casefold() in blocked_suffixes:
+                failures.append(str(path.relative_to(ROOT)))
+
+        self.assertFalse(
+            failures,
+            'Raw source binaries must stay outside the repository: {}'.format(
+                failures
+            ),
+        )
+
     def test_required_contribution_files_exist(self):
         required_files = [
+            'docs/policies/资料来源登记.md',
             "CONTRIBUTING.md",
             "PRIVACY.md",
             ".github/PULL_REQUEST_TEMPLATE.md",
